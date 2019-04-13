@@ -1,8 +1,17 @@
-<<<<<<< HEAD
-client/node_modules/
-server/node_modules/
-=======
-./client/node_modules/
-./server/node_modules/
->>>>>>> 60b3053b4c77ba7a3e8a99cccb336e280fe84a3d
+.DS_Store
+node_modules/
+/dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+/test/unit/coverage/
+/test/e2e/reports/
+selenium-debug.log
 
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
