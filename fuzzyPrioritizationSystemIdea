@@ -1,0 +1,27 @@
+Application takes certain parameters and spits out an ordered list of items that are most important to least
+
+
+
+
+Class:
+    Name: (ie. CISC 467)
+    Professor:
+    Syllabus: (future work: Extract marking breakdown from pdf/website ie. exam: 40%)
+        Marking Breakdown: Midterm - 15%, Homework: 10%, etc.. (add new "type" of task: {typeName, percent worth})
+    Overall Difficulty: Very High, High, Medium, Low (heuristic)
+
+Task Item:
+    Name:
+    Belongs to Class: [ClassObj1, ClassObj2,... ClassObjN]
+    Due Date:
+    Percentage of Final Grade:
+    Current Grade in Percent:
+
+
+Input: Task Item(s)
+Output: Prioritized List of Task Items(s) /IfTime: with pseudo schedule 
+
+
+Notes:
+
+Running nodemon server /w local depend: npx nodemon main.js
