@@ -5,10 +5,19 @@ import App from './App'
 import router from './router'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
+import 'material-design-icons-iconfont/dist/material-design-icons.css'
+import colors from 'vuetify/es5/util/colors'
 
 Vue.config.productionTip = false
 
-Vue.use(Vuetify)
+Vue.use(Vuetify, {
+  theme: {
+    primary: colors.orange.lighten2,
+    secondary: colors.green.accent4,
+    accent: colors.green.accent4,
+    success: colors.green.accent4
+  }
+})
 
 /* eslint-disable no-new */
 new Vue({

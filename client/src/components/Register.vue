@@ -1,29 +1,57 @@
 <template>
-  <div class="pl-5 pr-5 pt-2 pb-2">
+  <div>
     <v-layout column>
         <v-flex xs6>
           <div class ="white elevation-2">
-            <v-toolbar flat dense class="indigo" dark>
+            <v-toolbar flat class="orange lighten-2" dark>
               <v-toolbar-title>Register</v-toolbar-title>
             </v-toolbar>
-            <div class="pl-5 pr-5 pt-5 pb-5">
+            <div class="pl-5 pr-5 pt-4 pb-2">
               <v-text-field
                 type="email"
-                name="email"
                 v-model="email"
-                placeholder="email" />
+                :rules="[rules.required, rules.email]"
+                label="E-mail"
+                color="green accent-4"
+                loading
+              >
+                <template v-slot:progress>
+                  <v-progress-linear
+                    :value="emailProg"
+                    :color="emailColor"
+                    height="7"
+                  ></v-progress-linear>
+                </template>
+              </v-text-field>
               <br>
               <v-text-field
-                type="password"
-                name="password"
                 v-model="password"
-                placeholder="password" />
+                :append-icon="show1 ? 'visibility' : 'visibility_off'"
+                :rules="[rules.required, rules.min, rules.max]"
+                :type="show1 ? 'text' : 'password'"
+                name="input-10-1"
+                counter
+                @click:append="show1 = !show1"
+                label="Password"
+                color="green accent-4"
+                loading
+              >
+                <template v-slot:progress>
+                  <v-progress-linear
+                    :value="passProg"
+                    :color="passColor"
+                    height="7"
+                  ></v-progress-linear>
+                </template>
+              </v-text-field>
               <br>
               <div class="error" v-html="error" />
-              <v-btn outline color="indigo"
-                @click="register">
-                Register
-              </v-btn>
+                <div class="btn">
+                  <v-btn outline color="green accent-4"
+                    @click="register">
+                    Register
+                  </v-btn>
+              </div>
           </div>
         </div>
       </v-flex>
@@ -34,13 +62,21 @@
 <script>
 import AuthenticationService from '@/services/AuthenticationService'
 export default {
-  data () {
-    return {
-      email: '',
-      password: '',
-      error: null
+  data: () => ({
+    email: '',
+    show1: false,
+    password: '',
+    error: null,
+    rules: {
+      required: value => !!value || 'Required.',
+      min: v => v.length >= 8 || 'Min 8 characters',
+      max: w => w.length <= 32 || 'Max 32 characters',
+      email: value => {
+        const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+        return pattern.test(value) || 'Invalid e-mail.'
+      }
     }
-  },
+  }),
   methods: {
     async register () {
       try {
@@ -51,14 +87,40 @@ export default {
       } catch (error) {
         this.error = error.response.data.error
       }
+    },
+    emailIsValid (value) {
+      const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+      if (pattern.test(value) === true) { return 1 } else return 0
+    }
+  },
+  computed: {
+    emailProg () {
+      if (this.emailIsValid(this.email) === 1) {
+        return Infinity
+      } else {
+        return this.email.length * 5
+      }
+    },
+    passProg () {
+      return Math.min(100, this.password.length * 13)
+    },
+    passColor () {
+      return ['error', 'warning', 'success'][Math.floor(this.passProg / 40)]
+    },
+    emailColor () {
+      if (this.emailProg === Infinity) {
+        return 'success'
+      } else {
+        return ['error', 'warning'][Math.floor(this.emailProg / 50)]
+      }
     }
   }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .error {
-  color: red;
+  background-color: red;
+  color: white;
 }
 </style>
