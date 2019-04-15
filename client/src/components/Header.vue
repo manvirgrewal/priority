@@ -23,6 +23,11 @@
     <v-spacer></v-spacer>
     <v-toolbar-items>
       <v-btn flat dark
+        @click="navigateTo({name: 'login'})"
+      >
+        LOGIN
+      </v-btn>
+      <v-btn flat dark
         @click="navigateTo({name: 'register'})"
       >
         SIGN UP

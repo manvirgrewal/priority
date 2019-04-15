@@ -29,7 +29,7 @@ module.exports = {
           break
         default:
           res.status(400).send({
-            error: 'Invalid Registration Information!'
+            error: 'Invalid Information!'
           })
       }
     } else {
