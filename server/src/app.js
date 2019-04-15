@@ -12,7 +12,7 @@ app.use(bodyParser.json())
 app.use(cors())
 
 require('./routes')(app)
-
+//  { force: true } -- resets db
 sequelize.sync()
   .then(() => {
     app.listen(config.port)
