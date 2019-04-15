@@ -63,7 +63,9 @@
 
 <script>
 import AuthenticationService from '@/services/AuthenticationService'
+import navigation from '@/mixins/navigation'
 export default {
+  mixins: [navigation],
   data: () => ({
     email: '',
     show1: false,
@@ -82,10 +84,13 @@ export default {
   methods: {
     async register () {
       try {
-        await AuthenticationService.register({
+        const response = await AuthenticationService.register({
           email: this.email,
           password: this.password
         })
+        this.$store.dispatch('setToken', response.data.token)
+        this.$store.dispatch('setUser', response.data.user)
+        this.navigateTo({name: 'dashboard'})
       } catch (error) {
         this.error = error.response.data.error
       }

@@ -2,7 +2,7 @@
   <div class="home">
     <v-container>
       <div class="home-title">
-        <h1>Welcome to </h1>
+        <h1>Welcome to</h1>
         <h1 class="h1x">Priority</h1>
       </div>
       <br>
