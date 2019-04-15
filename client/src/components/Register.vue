@@ -1,7 +1,8 @@
 <template>
   <div>
-    <v-layout column>
-        <v-flex xs6>
+    <v-container fluid fill-height>
+    <v-layout align-center justify-center>
+        <v-flex xs12 sm8 md4>
           <div class ="white elevation-2">
             <v-toolbar flat class="orange lighten-2" dark>
               <v-toolbar-title>Register</v-toolbar-title>
@@ -56,6 +57,7 @@
         </div>
       </v-flex>
     </v-layout>
+    </v-container>
   </div>
 </template>
 
