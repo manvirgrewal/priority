@@ -14,12 +14,11 @@
       Priority
     </span>
   </v-toolbar-title>
-    <!-- TODO: implement create priority list page -->
     <v-toolbar-items>
       <v-btn
-        v-if="$store.state.isUserLoggedIn"
         flat
         dark
+        @click="navigateTo({name: 'create'})"
       >
         CREATE
       </v-btn>
@@ -75,6 +74,7 @@ export default {
   }
 }
 </script>
+
 <style scoped>
   .home{
     cursor: pointer;
