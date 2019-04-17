@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="noscroll">
     <Spanel title="Login">
       <v-text-field
         type="email"
@@ -84,7 +84,7 @@ export default {
         })
         this.$store.dispatch('setToken', response.data.token)
         this.$store.dispatch('setUser', response.data.user)
-        this.navigateTo({name: 'dashboard'})
+        this.navigateTo({name: 'tasks'})
       } catch (error) {
         this.error = error.response.data.error
       }

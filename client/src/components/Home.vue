@@ -1,49 +1,51 @@
 <template>
   <div class="home">
-    <v-container>
-      <div class="home-title">
-        <h1>Welcome to</h1>
-        <h1 class="h1x">Priority</h1>
-      </div>
-      <br>
-      <h2>Your path to getting shit done asap.</h2>
-      <ul>
-        <li>
-          Create automatically prioritized schedules.
-        </li>
-        <li>
-          Prioritization is based on your deadlines and needs.
-        </li>
-        <li>
-          Schedules dynamically update in real time according to your life.
-        </li>
-      </ul>
-      <br>
-      <h2>Ever evolving.</h2>
-      <ul>
-        <li>
-        Our algorithm is constantly updated to become more accurate.
-        </li>
-        <li>
-          We care about your objectives and needs.
-        </li>
-        <li>
-          Set and forget. We will do the rest.
-        </li>
-      </ul>
-    </v-container>
+    <div class="home-title">
+      <h1>Welcome to</h1>
+      <h1 class="h1x">Priority</h1>
+    </div>
+    <br>
+    <h2>Your path to getting shit done asap.</h2>
+    <ul>
+      <li>
+        Create automatically prioritized schedules.
+      </li>
+      <li>
+        Prioritization is based on your deadlines and needs.
+      </li>
+      <li>
+        Schedules dynamically update in real time according to your life.
+      </li>
+    </ul>
+    <br>
+    <h2>Ever evolving.</h2>
+    <ul>
+      <li>
+      Our algorithm is constantly updated to become more accurate.
+      </li>
+      <li>
+        We care about your objectives and needs.
+      </li>
+      <li>
+        Set and forget. We will do the rest.
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
+import panel from '@/templates/Panel'
 export default {
-  name: 'Home'
+  name: 'Home',
+  components: {
+    panel
+  }
 }
 </script>
 
 <style scoped>
-.home-title {
-  padding: 0px;
+.home {
+  padding-top: 20px;
 }
 .h1x {
   font-style: italic;

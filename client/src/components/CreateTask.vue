@@ -1,70 +1,64 @@
 <template>
-  <div>
-    <v-layout align-center justify-center>
-      <v-flex xs7>
-        <panel title="Create">
-          <v-text-field
-            label="Task Name"
-            v-model="task.name"
-            color="green accent-4"
-          >
-          </v-text-field>
-          <v-text-field
-            label="Description"
-            v-model="task.description"
-            color="green accent-4"
-          >
-          </v-text-field>
-          <v-text-field
-            label="Class"
-            v-model="task.class"
-            color="green accent-4"
-          >
-          </v-text-field>
-          <v-menu
-            v-model="menu"
-            :close-on-content-click="false"
-            :nudge-right="40"
-            lazy
-            transition="scale-transition"
-            offset-y
-            full-width
-            min-width="290px"
-          >
-          <template v-slot:activator="{ on }">
-            <v-text-field
-              v-model="task.date"
-              label="Due Date"
-              readonly
-              v-on="on"
-            ></v-text-field>
-          </template>
-          <v-date-picker v-model="task.date">
-          </v-date-picker>
-          </v-menu>
-          <!-- <v-select
-            flat
-            v-model="task.difficulty"
-            :items="levels"
-            label="Estimated Difficulty"
-          ></v-select> -->
-          <v-slider
-            label="Estimated Difficulty"
-            v-model="task.difficulty"
-            max="10"
-            step="1"
-            thumb-label="always"
-            :thumb-size="24"
-            ticks="always"
-            tick-size="2"
-          ></v-slider>
-          <v-btn outline color="green accent-4"
-            @click="add">
-            ADD
-          </v-btn>
-        </panel>
-      </v-flex>
-    </v-layout>
+  <div class="noscroll">
+    <panel title="Create">
+      <v-text-field
+        label="Task Name"
+        v-model="task.name"
+        color="green accent-4"
+      >
+      </v-text-field>
+      <v-menu
+        v-model="menu"
+        :close-on-content-click="false"
+        lazy
+        offset-y
+        min-width="290px"
+      >
+      <template v-slot:activator="{ on }">
+        <v-text-field
+          v-model="task.date"
+          label="Due Date"
+          readonly
+          v-on="on"
+        ></v-text-field>
+      </template>
+      <v-date-picker
+        no-title
+        v-model="task.date"
+        @input="menu = false"
+      >
+      </v-date-picker>
+      </v-menu>
+      <v-text-field
+        label="Description"
+        v-model="task.description"
+        color="green accent-4"
+      >
+      </v-text-field>
+      <v-text-field
+        label="Class"
+        v-model="task.class"
+        color="green accent-4"
+      >
+      </v-text-field>
+      <!-- <v-select
+        v-model="task.difficulty"
+        dense
+        :items="levels"
+        label="Difficulty"
+      ></v-select> -->
+      <v-radio-group label="Difficulty Level: " v-model="task.difficulty" row>
+        <v-radio label="Very Easy" value="0.2"></v-radio>
+        <v-radio label="Not bad" value="0.4"></v-radio>
+        <v-radio label="Probably Hard" value="0.6"></v-radio>
+        <v-radio label="Difficult" value="0.8"></v-radio>
+        <v-radio label="Extreme" value="1"></v-radio>
+      </v-radio-group>
+      <v-btn outline color="green accent-4"
+        @click="add">
+        ADD
+      </v-btn>
+    </panel>
   </div>
 </template>
 
@@ -102,6 +96,5 @@ export default {
   }
 }
 </script>
-
 <style scoped>
 </style>

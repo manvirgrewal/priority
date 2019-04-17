@@ -1,8 +1,7 @@
 <template>
-  <v-container fluid fill-height>
-    <v-layout align-center justify-center>
+    <v-layout justify-center>
       <v-flex>
-        <div class ="white elevation-2">
+        <div flat class ="white">
           <v-toolbar flat class="orange lighten-2" dark>
             <v-toolbar-title>{{title}}</v-toolbar-title>
             </v-toolbar>
@@ -12,7 +11,6 @@
         </div>
       </v-flex>
     </v-layout>
-  </v-container>
 </template>
 
 <script>

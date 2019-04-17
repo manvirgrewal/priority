@@ -1,11 +1,9 @@
 <template>
   <div id="app">
-    <v-app>
+    <v-app class="noscroll">
       <PageHeader />
         <v-content>
-          <v-container fluid>
-            <router-view />
-          </v-container>
+          <router-view />
         </v-content>
     </v-app>
   </div>
@@ -28,5 +26,12 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  background-color:white;
+}
+.noscroll {
+  width: 100%;
+  position: fixed;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 </style>
