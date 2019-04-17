@@ -1,8 +1,6 @@
 Application takes certain parameters and spits out an ordered list of items that are most important to least
 
 
-
-
 Class:
     Name: (ie. CISC 467)
     Professor:
@@ -19,7 +17,19 @@ Task Item:
 
 
 Input: Task Item(s)
-Output: Prioritized List of Task Items(s) /IfTime: with pseudo schedule 
+Output: Prioritized List of Task Items(s) /IfTime: with pseudo schedule
+
+
+'Priority' increases when:
+  Task is 'Worth' more than any existing tasks
+  'Due Date' is sooner than any existing tasks
+  'Class Priority' is higher than existing tasks for different classes
+  'Estimated Difficulty' is higher than any exists tasks
+  'Worth' + 'Current Grade' is farther away than existing tasks to meet 'Minimum Grade Target'
+    => Call this value 'DistanceToMinimumGrade'
+
+  List Prioritization Update:
+    Whenever a change is made to a task, the algorithm runs again and returns a new updated prioritized list. 
 
 
 Notes:

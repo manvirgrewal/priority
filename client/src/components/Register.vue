@@ -43,7 +43,7 @@
         <div class="btn">
           <v-btn outline color="green accent-4"
             @click="register">
-            Register
+            REGISTER
           </v-btn>
       </div>
     </Spanel>

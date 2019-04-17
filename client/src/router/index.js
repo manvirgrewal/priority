@@ -4,7 +4,8 @@ import Home from '@/components/Home'
 import Register from '@/components/Register'
 import Login from '@/components/Login'
 import Dashboard from '@/components/Dashboard'
-import Create from '@/components/Create'
+import CreateTask from '@/components/CreateTask'
+import Tasks from '@/components/Tasks'
 
 Vue.use(Router)
 
@@ -31,9 +32,14 @@ export default new Router({
       component: Dashboard
     },
     {
-      path: '/create',
-      name: 'create',
-      component: Create
+      path: '/create-task',
+      name: 'create-task',
+      component: CreateTask
+    },
+    {
+      path: '/tasks',
+      name: 'tasks',
+      component: Tasks
     }
   ]
 })

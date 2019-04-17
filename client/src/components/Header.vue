@@ -18,9 +18,16 @@
       <v-btn
         flat
         dark
-        @click="navigateTo({name: 'create'})"
+        @click="navigateTo({name: 'tasks'})"
       >
-        CREATE
+        TASKS
+      </v-btn>
+      <v-btn
+        flat
+        dark
+        @click="navigateTo({name: 'create-task'})"
+      >
+        CREATE TASK
       </v-btn>
     </v-toolbar-items>
     <v-spacer></v-spacer>
