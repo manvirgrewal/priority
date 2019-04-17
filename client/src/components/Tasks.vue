@@ -1,22 +1,6 @@
 <template>
   <div class="noscroll">
     <panel title="Tasks">
-      <v-text-field
-        flat
-        v-model="task"
-        placeholder="What are you working on?"
-        @keydown.enter="create"
-      >
-      <v-fade-transition v-slot:append>
-          <v-icon
-            v-if="task"
-            @click="create"
-          >
-            add_circle
-          </v-icon>
-        </v-fade-transition>
-      </v-text-field>
-
       <h2 class="display-1 success--text pl-3">
         Tasks:&nbsp;
         <v-fade-transition leave-absolute>
@@ -51,10 +35,21 @@
       </v-layout>
 
       <v-divider class="mb-3"></v-divider>
-
+      <!-- <v-card flat>
+        <div
+        v-for="item in items"
+        :key="item.id"
+        >
+          {{item.name}}-
+          {{item.date}}-
+          {{item.description}}-
+          {{item.class}}-
+          {{item.difficulty}}
+        </div>
+      </v-card> -->
       <v-card v-if="tasks.length > 0">
         <v-slide-y-transition
-          class="py-0"
+          class="py-2"
           group
           tag="v-list"
         >
@@ -64,38 +59,54 @@
             :key="`${i}-divider`"
           ></v-divider>
 
-          <v-list-tile :key="`${i}-${task.text}`">
+          <v-list-tile :key="`${i}-${task.name}`">
             <v-list-tile-action>
               <v-checkbox
-                v-model="task.done"
+                v-model="task.isDone"
                 color="info darken-3"
               >
                 <template v-slot:label>
                   <div
-                    :class="task.done && 'grey--text' || 'text--primary'"
-                    class="ml-3"
-                    v-text="task.text"
+                    :class="task.isDone && 'grey--text' || 'text--primary'"
+                    class="description"
+                    v-text="task.name"
                   ></div>
+                  <div class="description"
+                    v-text="task.description">
+                  </div>
+                  <div class="description"
+                    v-text="task.date">
+                  </div>
+                  <div class="description"
+                    v-text="task.class">
+                  </div>
+                  <div class="description"
+                    v-text="task.difficulty">
+                  </div>
                 </template>
               </v-checkbox>
             </v-list-tile-action>
-
             <v-spacer></v-spacer>
-
             <v-scroll-x-transition>
               <v-icon
-                v-if="task.done"
+                v-if="task.isDone"
                 color="success"
               >
                 check
               </v-icon>
             </v-scroll-x-transition>
           </v-list-tile>
+          <div class="space" :key="task.id">
+          </div>
         </template>
       </v-slide-y-transition>
     </v-card>
     <br>
     <br>
+    <v-btn outline color="green accent-4"
+      @click="clearList">
+      Delete All
+    </v-btn>
   </panel>
 </div>
 </template>
@@ -107,14 +118,23 @@ export default {
   components: {
     panel
   },
-  data: () => ({
-    tasks: [
-    ],
-    task: null
-  }),
+  data () {
+    return {
+      tasks: [
+      ],
+      task: null
+    }
+  },
+  async mounted () {
+    this.tasks = (await TasksService.index()).data
+  },
+  methods: {
+    clearList () {
+    }
+  },
   computed: {
     completedTasks () {
-      return this.tasks.filter(task => task.done).length
+      return this.tasks.filter(task => task.isDone).length
     },
     progress () {
       return this.completedTasks / this.tasks.length * 100
@@ -122,22 +142,17 @@ export default {
     remainingTasks () {
       return this.tasks.length - this.completedTasks
     }
-  },
-  methods: {
-    create () {
-      this.tasks.push({
-        done: false,
-        text: this.task
-      })
-
-      this.task = null
-    },
-    async mounted () {
-      this.tasks = await TasksService.index()
-    }
   }
 }
 </script>
 
 <style scoped>
+.description{
+  width: 100%;
+  padding-left: 20px;
+  padding-top: 30px;
+}
+.space{
+  padding-top: 4%;
+}
 </style>
