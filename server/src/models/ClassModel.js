@@ -1,13 +1,14 @@
 module.exports = (sequelize, DataTypes) => {
-  const Task = sequelize.define('Task', {
+  const ClassModel = sequelize.define('ClassModel', {
     name: {
       type: DataTypes.STRING,
       unique: true
     },
     professor: DataTypes.STRING,
+    description: DataTypes.STRING,
     difficulty: DataTypes.SMALLINT,
     importance: DataTypes.SMALLINT,
-    targetgrade: DataTypes.SMALLINT
+    targetGrade: DataTypes.STRING
   })
-  return Task
+  return ClassModel
 }

@@ -51,8 +51,8 @@ export default {
   data () {
     return {
       menu: [
+        { title: 'CLASSES', link: 'classes' },
         { title: 'TASKS', link: 'tasks' },
-        { title: 'CREATE TASK', link: 'create-task' },
         { title: 'LOGIN', link: 'login' },
         { title: 'REGISTER', link: 'register' },
         { title: 'LOGOUT', link: 'home' }

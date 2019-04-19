@@ -8,8 +8,3 @@ export default {
     return Api().post('create-task', task)
   }
 }
-
-// AuthenticationService.register({
-//   email: 'lol.imaliveagain@gmail.com',
-//   password: '123456'
-// })

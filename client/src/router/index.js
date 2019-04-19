@@ -6,6 +6,8 @@ import Login from '@/components/Login'
 import Dashboard from '@/components/Dashboard'
 import CreateTask from '@/components/CreateTask'
 import Tasks from '@/components/Tasks'
+import Classes from '@/components/Classes'
+import AddClass from '@/components/AddClass'
 
 Vue.use(Router)
 
@@ -40,6 +42,16 @@ export default new Router({
       path: '/tasks',
       name: 'tasks',
       component: Tasks
+    },
+    {
+      path: '/classes',
+      name: 'classes',
+      component: Classes
+    },
+    {
+      path: '/add-class',
+      name: 'add-class',
+      component: AddClass
     }
   ]
 })

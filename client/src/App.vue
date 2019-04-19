@@ -30,7 +30,7 @@ export default {
 }
 .noscroll {
   width: 100%;
-  position: fixed;
+  position: relative;
   overflow-x: hidden;
   overflow-y: hidden;
 }

@@ -2,6 +2,7 @@
   <div class="noscroll">
     <panel title="Create">
       <v-text-field
+        :rules="['Required']"
         label="Task Name"
         v-model="task.name"
         color="green accent-4"
@@ -18,7 +19,7 @@
         <v-text-field
           v-model="task.date"
           label="Due Date"
-          readonly
+          :rules="['Required']"
           v-on="on"
         ></v-text-field>
       </template>
@@ -36,6 +37,7 @@
       >
       </v-text-field>
       <v-text-field
+        :rules="['Required']"
         label="Class"
         v-model="task.class"
         color="green accent-4"
@@ -47,7 +49,12 @@
         :items="levels"
         label="Difficulty"
       ></v-select> -->
-      <v-radio-group label="Difficulty Level: " v-model="task.difficulty" row>
+      <v-radio-group
+        :rules="['Required']"
+        label="Difficulty Level: "
+        v-model="task.difficulty"
+        row
+      >
         <v-radio label="Very Easy" value="0.2"></v-radio>
         <v-radio label="Not bad" value="0.4"></v-radio>
         <v-radio label="Probably Hard" value="0.6"></v-radio>
@@ -88,7 +95,7 @@ export default {
     async add () {
       try {
         await TasksService.addTask(this.task)
-        //  this.navigateTo({name: 'tasks'})
+        this.navigateTo({name: 'tasks'})
       } catch (err) {
         console.log(err)
       }
