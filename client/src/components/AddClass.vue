@@ -72,7 +72,8 @@ export default {
       description: '',
       difficulty: 0,
       importance: 0,
-      targetGrade: ''
+      targetGrade: '',
+      classSelected: false
     }
   }),
   methods: {

@@ -8,7 +8,8 @@ module.exports = (sequelize, DataTypes) => {
     description: DataTypes.STRING,
     difficulty: DataTypes.SMALLINT,
     importance: DataTypes.SMALLINT,
-    targetGrade: DataTypes.STRING
+    targetGrade: DataTypes.STRING,
+    classSelected: DataTypes.BOOLEAN
   })
   return ClassModel
 }

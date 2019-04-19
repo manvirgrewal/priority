@@ -17,6 +17,7 @@
       >
       <template v-slot:activator="{ on }">
         <v-text-field
+          readonly
           v-model="task.date"
           label="Due Date"
           :rules="['Required']"
@@ -36,19 +37,14 @@
         color="green accent-4"
       >
       </v-text-field>
-      <v-text-field
+      <v-select
         :rules="['Required']"
-        label="Class"
-        v-model="task.class"
-        color="green accent-4"
-      >
-      </v-text-field>
-      <!-- <v-select
-        v-model="task.difficulty"
+        :items="getClassNames"
+        v-model="selectedClass"
         dense
-        :items="levels"
-        label="Difficulty"
-      ></v-select> -->
+        label="Class"
+      >
+      </v-select>
       <v-radio-group
         :rules="['Required']"
         label="Difficulty Level: "
@@ -72,25 +68,31 @@
 <script>
 import panel from '@/templates/Panel'
 import TasksService from '@/services/TasksService'
+import ClassesService from '@/services/ClassesService'
 import navigation from '@/mixins/navigation'
 export default {
   mixins: [navigation],
   components: {
     panel
   },
-  data: () => ({
-    menu: false,
-    date: new Date().toISOString().substr(0, 10),
-    levels: [1, 2, 3, 4, 5],
-    task: {
-      name: '',
-      description: '',
-      class: '',
-      date: this.date,
-      difficulty: 0,
-      isDone: false
+  data () {
+    return {
+      menu: false,
+      date: new Date().toISOString().substr(0, 10),
+      levels: [1, 2, 3, 4, 5],
+      classes: [
+      ],
+      selectedClass: '',
+      task: {
+        name: '',
+        description: '',
+        class: '',
+        date: this.date,
+        difficulty: 0,
+        isDone: false
+      }
     }
-  }),
+  },
   methods: {
     async add () {
       try {
@@ -99,6 +101,18 @@ export default {
       } catch (err) {
         console.log(err)
       }
+    }
+  },
+  async mounted () {
+    this.classes = (await ClassesService.index()).data
+  },
+  computed: {
+    getClassNames () {
+      var names = []
+      this.classes.forEach(item => {
+        names.push(item.name)
+      })
+      return names
     }
   }
 }
