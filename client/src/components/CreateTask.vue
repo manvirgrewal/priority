@@ -1,6 +1,6 @@
 <template>
   <div class="noscroll">
-    <panel title="Create">
+    <panel title="Create Task">
       <v-text-field
         :rules="['Required']"
         label="Task Name"

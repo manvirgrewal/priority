@@ -13,12 +13,14 @@
         <v-spacer>
         </v-spacer>
         <v-btn
-          class="mr-2"
-          outline color="green accent-4"
-          @click="navigateTo('add-class')"
-        >
-          ADD CLASS
-        </v-btn>
+        fab
+        small
+        depressed
+        color="primary"
+        @click="navigateTo('add-class')"
+      >
+        <v-icon dark>add</v-icon>
+      </v-btn>
       </v-layout>
       <v-divider class="mt-3">
       </v-divider>
@@ -28,17 +30,12 @@
           group
           tag="v-list"
         >
-          <template v-for="(myClass, i) in Classes">
-            <v-divider
-              v-if="i !== 0"
-              :key="`${i}-divider`"
-            >
-            </v-divider>
-            <v-list-tile :key="`${i}-${myClass.name}`">
+          <template v-for="myClass in Classes">
+            <v-list-tile :key="myClass.id">
               <v-list-tile-action>
                 <v-checkbox
                   v-model="myClass.classSelected"
-                  color="info darken-3"
+                  color="secondary"
                 >
                   <template v-slot:label>
                     <div v-text="myClass.name">

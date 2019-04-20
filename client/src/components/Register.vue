@@ -1,6 +1,6 @@
 <template>
   <div class="noscroll">
-    <Spanel title="Register">
+    <panel title="Register">
       <v-text-field
         type="email"
         v-model="email"
@@ -46,19 +46,19 @@
             REGISTER
           </v-btn>
       </div>
-    </Spanel>
+    </panel>
   </div>
 </template>
 
 <script>
 import AuthenticationService from '@/services/AuthenticationService'
-import Spanel from '@/templates/Spanel'
+import panel from '@/templates/Panel'
 import navigation from '@/mixins/navigation'
 import emailPass from '@/mixins/email-pass'
 export default {
   mixins: [navigation, emailPass],
   components: {
-    Spanel
+    panel
   },
   data: () => ({
     email: '',

@@ -6,17 +6,20 @@
         Tasks:&nbsp;
         <v-fade-transition leave-absolute>
           <span :key="`tasks-${tasks.length}`">
-            {{ tasks.length }}
-          </span>
+              {{ tasks.length }}
+            </span>
         </v-fade-transition>
       </h2>
       <v-spacer>
       </v-spacer>
       <v-btn
-        class="mr-2"
-        outline color="green accent-4"
-        @click="navigateTo('create-task')">
-        CREATE NEW TASK
+        fab
+        small
+        depressed
+        color="primary"
+        @click="navigateTo('create-task')"
+      >
+        <v-icon dark>add</v-icon>
       </v-btn>
       </v-layout>
       <v-divider class="mt-3"></v-divider>
@@ -37,6 +40,7 @@
         <v-progress-circular
           :value="progress"
           class="mr-2"
+          color="secondary"
         >
         </v-progress-circular>
       </v-layout>
@@ -50,19 +54,12 @@
           group
           tag="v-list"
         >
-        <template v-for="(task, i) in tasks">
-
-          <v-divider
-            v-if="i !== 0"
-            :key="`${i}-divider`"
-          >
-          </v-divider>
-
-          <v-list-tile :key="`${i}-${task.name}`">
+        <template v-for="task in tasks">
+          <v-list-tile :key="task.id">
             <v-list-tile-action>
               <v-checkbox
                 v-model="task.isDone"
-                color="info darken-3"
+                color="secondary"
               >
                 <template v-slot:label>
                   <div
@@ -71,44 +68,29 @@
                     v-text="task.name"
                   >
                   </div>
-                  <!-- <div class="tasktext"
-                    v-text="task.description">
-                  </div>
-                  <div class="tasktext"
-                    v-text="task.date">
-                  </div>
-                  <div class="tasktext"
-                    v-text="task.class">
-                  </div>
-                  <div class="tasktext"
-                    v-text="task.difficulty">
-                  </div> -->
                 </template>
               </v-checkbox>
             </v-list-tile-action>
-
+              <v-btn
+                  small
+                  fab
+                  light
+                  flat
+                  @click="navigateTo('create-task')"
+                >
+                  <v-scroll-x-transition>
+                    <v-icon large color="primary">chevron_right</v-icon>
+                  </v-scroll-x-transition>
+              </v-btn>
             <v-spacer></v-spacer>
-
-            <v-scroll-x-transition>
-              <v-icon
-                v-if="task.isDone"
-                color="success"
-              >
-                check
-              </v-icon>
-            </v-scroll-x-transition>
           </v-list-tile>
-
-          <div class="space" :key="task.id">
-          </div>
-
         </template>
       </v-slide-y-transition>
     </v-card>
-    <v-btn outline color="green accent-4"
+    <!-- <v-btn outline color="green accent-4"
       @click="clearList">
       Delete All
-    </v-btn>
+    </v-btn> -->
   </panel>
 </div>
 </template>

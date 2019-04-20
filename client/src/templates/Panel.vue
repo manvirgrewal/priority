@@ -1,6 +1,6 @@
 <template>
     <v-layout justify-center>
-      <v-flex>
+      <v-flex xs12 sm8>
         <div flat class ="white">
           <v-toolbar flat class="orange lighten-2" dark>
             <v-toolbar-title>{{title}}</v-toolbar-title>

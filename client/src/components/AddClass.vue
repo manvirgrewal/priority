@@ -1,6 +1,6 @@
 <template>
   <div class="noscroll">
-    <panel title="ADD CLASS">
+    <panel title="Create Class">
       <v-text-field
         label="Class Name"
         v-model="myClass.name"
