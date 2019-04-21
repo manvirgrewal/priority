@@ -11,6 +11,16 @@ module.exports = {
       })
     }
   },
+  async show (req, res) {
+    try {
+      const task = await Task.findByPk(req.params.taskId)
+      res.send(task)
+    } catch (err) {
+      res.status(500).send({
+        error: "An error occured trying to fetch this task."
+      })
+    }
+  },
   async post (req, res) {
     try {
       const task = await Task.create(req.body)

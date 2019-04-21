@@ -1,6 +1,6 @@
 <template>
   <div class="noscroll">
-    <panel title="Create Class">
+    <panel title="Edit Class">
       <v-text-field
         label="Class Name"
         :rules="[rules.required]"
@@ -53,8 +53,8 @@
       >
       </v-text-field>
       <v-btn outline color="green accent-4"
-        @click="add">
-        ADD
+        @click="update">
+        Update
       </v-btn>
     </panel>
   </div>
@@ -85,14 +85,13 @@ export default {
     }
   }),
   methods: {
-    async add () {
-      try {
-        await ClassesService.addClass(this.myClass)
-        this.navigateTo({name: 'classes'})
-      } catch (err) {
-        console.log(err)
-      }
+    update () {
+      console.log('updated!')
     }
+  },
+  async mounted () {
+    const classId = this.$store.state.route.params.classId
+    this.myClass = (await ClassesService.show(classId)).data
   }
 }
 </script>

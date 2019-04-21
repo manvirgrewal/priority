@@ -76,7 +76,12 @@
                   fab
                   light
                   flat
-                  @click="navigateTo('create-task')"
+                  @click="navigateTo(
+                    {
+                      name: 'task',
+                      params: {taskId: task.id}
+                    }
+                  )"
                 >
                   <v-scroll-x-transition>
                     <v-icon large color="primary">chevron_right</v-icon>

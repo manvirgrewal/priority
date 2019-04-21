@@ -43,6 +43,22 @@
                   </template>
                 </v-checkbox>
               </v-list-tile-action>
+              <v-btn
+                  small
+                  fab
+                  light
+                  flat
+                  @click="navigateTo(
+                    {
+                      name: 'class',
+                      params: {classId: myClass.id}
+                    }
+                  )"
+                >
+                  <v-scroll-x-transition>
+                    <v-icon large color="primary">chevron_right</v-icon>
+                  </v-scroll-x-transition>
+              </v-btn>
               <v-spacer>
               </v-spacer>
             </v-list-tile>

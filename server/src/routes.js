@@ -9,12 +9,16 @@ module.exports = (app) => {
     AuthenticationController.register)
   app.post('/login',
     AuthenticationController.login)
-  app.get('/create-task',
+  app.get('/tasks',
     TasksController.index)
+  app.get('/tasks/:taskId',
+    TasksController.show)
   app.post('/create-task',
     TasksController.post)
   app.get('/add-class',
     ClassesController.index)
   app.post('/add-class',
     ClassesController.post)
+  app.get('/classes/:classId',
+    ClassesController.show)
 }

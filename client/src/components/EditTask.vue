@@ -1,6 +1,6 @@
 <template>
-  <div class="noscroll">
-    <panel title="Create Task">
+<div class="noscroll">
+    <panel title="Edit Task">
       <v-text-field
         :rules="[rules.required]"
         label="Task Name"
@@ -58,8 +58,8 @@
         <v-radio label="Extreme" value="1"></v-radio>
       </v-radio-group>
       <v-btn outline color="green accent-4"
-        @click="add">
-        ADD
+        @click="update">
+        UPDATE
       </v-btn>
     </panel>
   </div>
@@ -82,31 +82,22 @@ export default {
       levels: [1, 2, 3, 4, 5],
       classes: [
       ],
-      task: {
-        name: '',
-        description: '',
-        class: '',
-        date: this.date,
-        difficulty: 0,
-        isDone: false
-      },
+      selectedClass: '',
+      task: {},
       rules: {
         required: value => !!value || 'Required.'
       }
     }
   },
   methods: {
-    async add () {
-      try {
-        await TasksService.addTask(this.task)
-        this.navigateTo({name: 'tasks'})
-      } catch (err) {
-        console.log(err)
-      }
+    update () {
+      console.log('updated!')
     }
   },
   async mounted () {
     this.classes = (await ClassesService.index()).data
+    const taskId = this.$store.state.route.params.taskId
+    this.task = (await TasksService.show(taskId)).data
   },
   computed: {
     getClassNames () {

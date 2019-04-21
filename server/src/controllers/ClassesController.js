@@ -11,6 +11,16 @@ module.exports = {
       })
     }
   },
+  async show (req, res) {
+    try {
+      const myClass = await ClassModel.findByPk(req.params.classId)
+      res.send(myClass)
+    } catch (err) {
+      res.status(500).send({
+        error: "An error occured trying to fetch this class."
+      })
+    }
+  },
   async post (req, res) {
     try {
       const myClass = await ClassModel.create(req.body)

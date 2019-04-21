@@ -8,6 +8,10 @@ import CreateTask from '@/components/CreateTask'
 import Tasks from '@/components/Tasks'
 import Classes from '@/components/Classes'
 import AddClass from '@/components/AddClass'
+import Task from '@/components/Task'
+import EditTask from '@/components/EditTask'
+import MyClass from '@/components/MyClass'
+import EditClass from '@/components/EditClass'
 
 Vue.use(Router)
 
@@ -52,6 +56,26 @@ export default new Router({
       path: '/add-class',
       name: 'add-class',
       component: AddClass
+    },
+    {
+      path: '/tasks/:taskId',
+      name: 'task',
+      component: Task
+    },
+    {
+      path: '/tasks/:taskId/edit',
+      name: 'edit-task',
+      component: EditTask
+    },
+    {
+      path: '/classes/:classId',
+      name: 'class',
+      component: MyClass
+    },
+    {
+      path: '/classes/:classId/edit',
+      name: 'edit-class',
+      component: EditClass
     }
   ]
 })
