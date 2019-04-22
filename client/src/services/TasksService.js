@@ -9,5 +9,8 @@ export default {
   },
   addTask (task) {
     return Api().post('create-task', task)
+  },
+  put (task) {
+    return Api().put(`tasks/${task.id}`, task)
   }
 }

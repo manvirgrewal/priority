@@ -12,7 +12,9 @@ module.exports = (app) => {
   app.get('/tasks',
     TasksController.index)
   app.get('/tasks/:taskId',
-    TasksController.show)
+    TasksController.show),
+  app.put('/tasks/:taskId',
+    TasksController.put)
   app.post('/create-task',
     TasksController.post)
   app.get('/add-class',
@@ -20,5 +22,7 @@ module.exports = (app) => {
   app.post('/add-class',
     ClassesController.post)
   app.get('/classes/:classId',
-    ClassesController.show)
+    ClassesController.show),
+  app.put('/classes/:classId',
+    ClassesController.put)
 }

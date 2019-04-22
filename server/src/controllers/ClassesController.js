@@ -30,5 +30,19 @@ module.exports = {
         error: "An error occured trying to add your class."
       })
     }
+  },
+  async put (req, res) {
+    try {
+      await ClassModel.update(req.body, {
+        where: {
+          id: req.params.classId
+        }
+      })
+      res.send(req.body)
+    } catch (err) {
+      res.status(500).send({
+        error: "An error occured trying to update your task."
+      })
+    }
   }
 }

@@ -52,6 +52,22 @@
         color="green accent-4"
       >
       </v-text-field>
+      <v-btn
+      small
+      fab
+      light
+      flat
+      @click="navigateTo(
+        {
+          name: 'class',
+          params: {classId: myClass.id}
+        }
+      )"
+    >
+      <v-scroll-x-transition>
+        <v-icon large color="primary">chevron_left</v-icon>
+      </v-scroll-x-transition>
+    </v-btn>
       <v-btn outline color="green accent-4"
         @click="update">
         Update
@@ -85,8 +101,19 @@ export default {
     }
   }),
   methods: {
-    update () {
-      console.log('updated!')
+    async update () {
+      const classId = this.$store.state.route.params.classId
+      try {
+        await ClassesService.put(this.myClass)
+        this.navigateTo({
+          name: 'class',
+          params: {
+            classId: classId
+          }
+        })
+      } catch (err) {
+        console.log("Couldn't update your class.")
+      }
     }
   },
   async mounted () {

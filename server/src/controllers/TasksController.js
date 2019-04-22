@@ -30,5 +30,19 @@ module.exports = {
         error: "An error occured trying to create your task."
       })
     }
+  },
+  async put (req, res) {
+    try {
+      await Task.update(req.body, {
+        where: {
+          id: req.params.taskId
+        }
+      })
+      res.send(req.body)
+    } catch (err) {
+      res.status(500).send({
+        error: "An error occured trying to update your task."
+      })
+    }
   }
 }

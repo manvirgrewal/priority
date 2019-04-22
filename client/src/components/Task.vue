@@ -27,7 +27,18 @@
           </v-list-tile-content>
         </v-list-tile>
       </v-list>
-      <v-btn outline color="green accent-4"
+      <v-btn
+        small
+        fab
+        light
+        flat
+        @click="navigateTo({name: 'tasks'})"
+      >
+        <v-scroll-x-transition>
+          <v-icon large color="primary">chevron_left</v-icon>
+        </v-scroll-x-transition>
+      </v-btn>
+      <v-btn outline color="secondary"
         @click="navigateTo({name: 'edit-task'})">
         EDIT
       </v-btn>

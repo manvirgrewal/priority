@@ -57,10 +57,26 @@
         <v-radio label="Difficult" value="0.8"></v-radio>
         <v-radio label="Extreme" value="1"></v-radio>
       </v-radio-group>
-      <v-btn outline color="green accent-4"
-        @click="update">
-        UPDATE
-      </v-btn>
+      <v-btn
+      small
+      fab
+      light
+      flat
+      @click="navigateTo(
+        {
+          name: 'task',
+          params: {taskId: task.id}
+        }
+      )"
+    >
+      <v-scroll-x-transition>
+        <v-icon large color="primary">chevron_left</v-icon>
+      </v-scroll-x-transition>
+    </v-btn>
+    <v-btn outline color="green accent-4"
+      @click="update">
+      UPDATE
+    </v-btn>
     </panel>
   </div>
 </template>
@@ -90,8 +106,19 @@ export default {
     }
   },
   methods: {
-    update () {
-      console.log('updated!')
+    async update () {
+      const taskId = this.$store.state.route.params.taskId
+      try {
+        await TasksService.put(this.task)
+        this.navigateTo({
+          name: 'task',
+          params: {
+            taskId: taskId
+          }
+        })
+      } catch (err) {
+        console.log("Couldn't update task.")
+      }
     }
   },
   async mounted () {
