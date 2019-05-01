@@ -5,7 +5,7 @@
       <h1 class="h1x">Priority</h1>
     </div>
     <br>
-    <h2>Your path to getting shit done asap.</h2>
+    <h2>Your path to getting stuff done asap.</h2>
     <ul>
       <li>
         Create automatically prioritized schedules.

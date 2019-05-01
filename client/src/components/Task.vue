@@ -35,12 +35,26 @@
         @click="navigateTo({name: 'tasks'})"
       >
         <v-scroll-x-transition>
-          <v-icon large color="primary">chevron_left</v-icon>
+          <v-icon
+            large
+            color="primary"
+          >
+            chevron_left
+          </v-icon>
         </v-scroll-x-transition>
       </v-btn>
-      <v-btn outline color="secondary"
+      <v-btn
+        small
+        fab
+        light
+        flat
         @click="navigateTo({name: 'edit-task'})">
-        EDIT
+        <v-icon
+          medium
+          color="primary"
+        >
+          edit
+        </v-icon>
       </v-btn>
     </panel>
   </div>

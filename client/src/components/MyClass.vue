@@ -44,9 +44,18 @@
           <v-icon large color="primary">chevron_left</v-icon>
         </v-scroll-x-transition>
       </v-btn>
-      <v-btn outline color="secondary"
+      <v-btn
+        small
+        fab
+        light
+        flat
         @click="navigateTo({name: 'edit-class'})">
-        EDIT
+        <v-icon
+          medium
+          color="primary"
+        >
+          edit
+        </v-icon>
       </v-btn>
     </panel>
   </div>
