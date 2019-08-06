@@ -72,22 +72,32 @@
               </v-checkbox>
             </v-list-tile-action>
               <v-btn
-                  small
-                  fab
-                  light
-                  flat
-                  @click="navigateTo(
-                    {
-                      name: 'task',
-                      params: {taskId: task.id}
-                    }
-                  )"
-                >
-                  <v-scroll-x-transition>
-                    <v-icon large color="primary">chevron_right</v-icon>
-                  </v-scroll-x-transition>
+                small
+                fab
+                light
+                flat
+                @click="navigateTo(
+                  {
+                    name: 'task',
+                    params: {taskId: task.id}
+                  }
+                )"
+              >
+                <v-scroll-x-transition>
+                  <v-icon large color="primary">chevron_right</v-icon>
+                </v-scroll-x-transition>
               </v-btn>
             <v-spacer></v-spacer>
+            <v-btn
+              medium
+              fab
+              light
+              flat
+              color="primary"
+              @click="deleteTask(task)"
+            >
+            <v-icon dark>delete_outline</v-icon>
+            </v-btn>
           </v-list-tile>
         </template>
       </v-slide-y-transition>
@@ -121,6 +131,15 @@ export default {
   },
   methods: {
     clearList () {
+    },
+    async deleteTask (theTask) {
+      try {
+        await TasksService.removeTask(theTask.id)
+      } catch (err) {
+        console.log("Couldn't delete task.")
+        console.log(err)
+      }
+      this.tasks.splice(this.tasks.indexOf(theTask), 1)
     }
   },
   computed: {

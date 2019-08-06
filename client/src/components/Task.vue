@@ -81,11 +81,6 @@ export default {
       task: {}
     }
   },
-  methods: {
-    update () {
-      console.log('updated!')
-    }
-  },
   async mounted () {
     this.classes = (await ClassesService.index()).data
     const taskId = this.$store.state.route.params.taskId

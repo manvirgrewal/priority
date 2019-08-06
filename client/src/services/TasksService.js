@@ -12,5 +12,8 @@ export default {
   },
   put (task) {
     return Api().put(`tasks/${task.id}`, task)
+  },
+  removeTask (taskId) {
+    return Api().delete(`tasks/${taskId}`)
   }
 }

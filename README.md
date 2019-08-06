@@ -6,7 +6,7 @@ Automatically creates a priority schedule for your upcoming deadlines according 
 
 # Instructions to run
 * CD into ./server/src
-* Run "npx nodemon app.ks"
+* Run "npx nodemon app.js"
 * CD into ./client/src
 * Run "npm run dev"
 
