@@ -61,7 +61,17 @@
               </v-btn>
               <v-spacer>
               </v-spacer>
-            </v-list-tile>
+              <v-btn
+                medium
+                fab
+                light
+                flat
+                color="primary"
+                @click="deleteClass(myClass)"
+              >
+              <v-icon dark>delete_outline</v-icon>
+              </v-btn>
+           </v-list-tile>
           </template>
         </v-slide-y-transition>
       </v-card>
@@ -88,6 +98,17 @@ export default {
   },
   async mounted () {
     this.Classes = (await ClassesService.index()).data
+  },
+  methods: {
+    async deleteClass (theClass) {
+      try {
+        await ClassesService.removeClass(theClass.id)
+      } catch (err) {
+        console.log("Couldn't delete class.")
+        console.log(err)
+      }
+      this.Classes.splice(this.Classes.indexOf(theClass), 1)
+    }
   }
 }
 </script>

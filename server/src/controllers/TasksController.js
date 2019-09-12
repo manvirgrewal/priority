@@ -7,7 +7,7 @@ module.exports = {
       res.send(tasks)
     } catch (err) {
       res.status(500).send({
-        error: 'An error occured trying to fetch your tasks.'
+        error: 'An error occurred trying to fetch your tasks.'
       })
     }
   },
@@ -17,7 +17,7 @@ module.exports = {
       res.send(task)
     } catch (err) {
       res.status(500).send({
-        error: 'An error occured trying to fetch this task.'
+        error: 'An error occurred trying to fetch this task.'
       })
     }
   },
@@ -27,7 +27,7 @@ module.exports = {
       res.send(task)
     } catch (err) {
       res.status(500).send({
-        error: 'An error occured trying to create your task.'
+        error: 'An error occurred trying to create your task.'
       })
     }
   },
@@ -41,7 +41,7 @@ module.exports = {
       res.send(req.body)
     } catch (err) {
       res.status(500).send({
-        error: 'An error occured trying to update your task.'
+        error: 'An error occurred trying to update your task.'
       })
     }
   },
@@ -56,7 +56,7 @@ module.exports = {
       res.send(taskId)
     } catch (err) {
       res.status(500).send({
-        error: 'An error occured trying to delete your task.'
+        error: 'An error occurred trying to delete your task.'
       })
     }
   },

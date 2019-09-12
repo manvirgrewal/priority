@@ -44,5 +44,20 @@ module.exports = {
         error: "An error occured trying to update your task."
       })
     }
+  },
+  async delete (req, res) {
+    const classId = req.params.classId
+    try {
+      await ClassModel.destroy({
+        where: {
+          id: classId
+        }
+      })
+      res.send(classId)
+    } catch (err) {
+      res.status(500).send({
+        error: 'An error occurred trying to delete your class.'
+      })
+    }
   }
 }

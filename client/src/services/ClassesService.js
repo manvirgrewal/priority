@@ -12,5 +12,8 @@ export default {
   },
   put (myClass) {
     return Api().put(`classes/${myClass.id}`, myClass)
+  },
+  removeClass (classId) {
+    return Api().delete(`classes/${classId}`)
   }
 }

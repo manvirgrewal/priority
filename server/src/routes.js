@@ -25,6 +25,8 @@ module.exports = (app) => {
     ClassesController.post)
   app.get('/classes/:classId',
     ClassesController.show),
+  app.delete('/classes/:classId',
+    ClassesController.delete),
   app.put('/classes/:classId',
     ClassesController.put)
 }
