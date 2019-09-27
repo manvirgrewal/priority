@@ -10,3 +10,5 @@ Automatically creates a priority schedule for your upcoming deadlines according 
 * CD into ./client/src
 * Run "npm run dev"
 
+# Quick Demo
+* https://youtu.be/8MXi0ty0whI
