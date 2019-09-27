@@ -12,3 +12,4 @@ Automatically creates a priority schedule for your upcoming deadlines according 
 
 # Quick Demo
 * https://youtu.be/8MXi0ty0whI
+* Next step: Priority Algorithm
